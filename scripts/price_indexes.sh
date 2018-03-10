@@ -3,7 +3,10 @@ coindesk(){
 	#startdate="2010-07-17"
 	startdate="2008-03-01"
 	enddate=$(date "+%Y-%m-%d")
-	exchange="bpi" #bpi, or eth, or ltc
+	exchange="$1" #bpi, or eth, or ltc
+	if [[ "x${exchange}" == "x" ]]; then
+		exchange="bpi"
+	fi
 	output="csv"  #also json
 	curl "https://api.coindesk.com/charts/data?output=${output}&data=${close_or_ohlc}&index=USD&startdate=${startdate}&enddate=${enddate}&exchanges=${bpi}&dev=1" \
 		-H 'Host: api.coindesk.com'  \
@@ -15,4 +18,6 @@ coindesk(){
 
 }
 
-coindesk $@
+coindesk bpi
+coindesk eth
+coindesk ltc
