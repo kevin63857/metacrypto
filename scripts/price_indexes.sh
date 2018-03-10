@@ -16,7 +16,7 @@ coindesk(){
 		--compressed \
 		-H 'Referer: https://www.coindesk.com/price/' \
 		-o data/"${outname}"
-	ln -sr data/"${outname}" data/"${exchange}"pricedata."${output}"
+	cp data/"${outname}" data/"${exchange}"_price_data."${output}"
 
 }
 
